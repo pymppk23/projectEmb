@@ -48,8 +48,9 @@ void create_screen_main() {
             }
         }
         {
+            // bwbt
             lv_obj_t *obj = lv_btn_create(parent_obj);
-            objects.obj0 = obj;
+            objects.bwbt = obj;
             lv_obj_set_pos(obj, 55, 186);
             lv_obj_set_size(obj, 61, 33);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff765ccc), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -57,10 +58,8 @@ void create_screen_main() {
             {
                 lv_obj_t *parent_obj = obj;
                 {
-                    // bwbt
                     lv_obj_t *obj = lv_label_create(parent_obj);
-                    objects.bwbt = obj;
-                    lv_obj_set_pos(obj, 0, 0);
+                    lv_obj_set_pos(obj, -1, 0);
                     lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
                     lv_obj_set_style_align(obj, LV_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
                     lv_obj_set_style_text_font(obj, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -157,10 +156,10 @@ void create_screen_main() {
         }
         {
             lv_obj_t *obj = lv_label_create(parent_obj);
-            objects.obj1 = obj;
-            lv_obj_set_pos(obj, 199, 136);
+            objects.obj0 = obj;
+            lv_obj_set_pos(obj, 222, 144);
             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            lv_obj_set_style_text_font(obj, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_14, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_bg_opa(obj, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff00f141), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_label_set_text(obj, "STOP");
@@ -225,8 +224,9 @@ void create_screen_buzzer() {
             }
         }
         {
+            // pwmbuz
             lv_obj_t *obj = lv_slider_create(parent_obj);
-            objects.obj2 = obj;
+            objects.pwmbuz = obj;
             lv_obj_set_pos(obj, 29, 89);
             lv_obj_set_size(obj, 190, 8);
             lv_slider_set_range(obj, 0, 255);
@@ -243,15 +243,10 @@ void create_screen_buzzer() {
             lv_label_set_text(obj, "Buzzer Volume");
         }
         {
+            // perbuz
             lv_obj_t *obj = lv_label_create(parent_obj);
-            lv_obj_set_pos(obj, 269, 82);
-            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
-            lv_obj_set_style_text_font(obj, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
-            lv_label_set_text(obj, "%");
-        }
-        {
-            lv_obj_t *obj = lv_label_create(parent_obj);
-            lv_obj_set_pos(obj, 247, 82);
+            objects.perbuz = obj;
+            lv_obj_set_pos(obj, 241, 84);
             lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
             lv_obj_set_style_text_font(obj, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_label_set_text(obj, "0");
@@ -264,8 +259,9 @@ void create_screen_buzzer() {
             lv_label_set_text(obj, "Motor pwm");
         }
         {
+            // pwmmo
             lv_obj_t *obj = lv_slider_create(parent_obj);
-            objects.obj3 = obj;
+            objects.pwmmo = obj;
             lv_obj_set_pos(obj, 29, 161);
             lv_obj_set_size(obj, 190, 9);
             lv_slider_set_range(obj, 0, 255);
@@ -273,6 +269,15 @@ void create_screen_buzzer() {
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xff9f363d), LV_PART_MAIN | LV_STATE_DEFAULT);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xffc81f1f), LV_PART_INDICATOR | LV_STATE_DEFAULT);
             lv_obj_set_style_bg_color(obj, lv_color_hex(0xffca2020), LV_PART_KNOB | LV_STATE_DEFAULT);
+        }
+        {
+            // permo
+            lv_obj_t *obj = lv_label_create(parent_obj);
+            objects.permo = obj;
+            lv_obj_set_pos(obj, 242, 156);
+            lv_obj_set_size(obj, LV_SIZE_CONTENT, LV_SIZE_CONTENT);
+            lv_obj_set_style_text_font(obj, &lv_font_montserrat_18, LV_PART_MAIN | LV_STATE_DEFAULT);
+            lv_label_set_text(obj, "0");
         }
     }
     

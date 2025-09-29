@@ -11,15 +11,16 @@ typedef struct _objects_t {
     lv_obj_t *main;
     lv_obj_t *buzzer;
     lv_obj_t *nextbt;
-    lv_obj_t *obj0;
     lv_obj_t *bwbt;
     lv_obj_t *fwbt;
     lv_obj_t *lbt;
     lv_obj_t *rbt;
-    lv_obj_t *obj1;
+    lv_obj_t *obj0;
     lv_obj_t *nextbt_1;
-    lv_obj_t *obj2;
-    lv_obj_t *obj3;
+    lv_obj_t *pwmbuz;
+    lv_obj_t *perbuz;
+    lv_obj_t *pwmmo;
+    lv_obj_t *permo;
 } objects_t;
 
 extern objects_t objects;
