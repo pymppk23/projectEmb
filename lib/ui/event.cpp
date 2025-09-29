@@ -10,29 +10,29 @@ extern int pwmChannel2;
 // String motorServer = "http://10.98.106.202";
 
 // ฟังก์ชันส่งคำสั่งไป ESP32 มอเตอร์
-// void sendCommand(String cmd)
-// {
-//   if (WiFi.status() == WL_CONNECTED)
-//   {
-//     HTTPClient http;
-//     String motorServer = "http://10.98.106.202";
-//     http.begin(motorServer + "/" + cmd);
-//     int httpCode = http.GET();
-//     if (httpCode > 0)
-//     {
-//       Serial.printf("Server response: %s\n", http.getString().c_str());
-//     }
-//     else
-//     {
-//       Serial.printf("HTTP Error: %d\n", httpCode);
-//     }
-//     http.end();
-//   }
-//   else
-//   {
-//     Serial.println("WiFi not connected!");
-//   }
-// }
+void sendCommand(String cmd)
+{
+  if (WiFi.status() == WL_CONNECTED)
+  {
+    HTTPClient http;
+    String motorServer = "http://10.98.106.202";
+    http.begin(motorServer + "/" + cmd);
+    int httpCode = http.GET();
+    if (httpCode > 0)
+    {
+      Serial.printf("Server response: %s\n", http.getString().c_str());
+    }
+    else
+    {
+      Serial.printf("HTTP Error: %d\n", httpCode);
+    }
+    http.end();
+  }
+  else
+  {
+    Serial.println("WiFi not connected!");
+  }
+}
 
 // ==== Callback ของปุ่ม (EEZ Studio จะเรียกฟังก์ชันนี้เวลาปุ่มถูกกด) ====
 
@@ -42,29 +42,29 @@ void event_handler(lv_event_t *e)
   lv_obj_t *obj = lv_event_get_target(e);
   int *pLED = (int *)lv_event_get_user_data(e);
 
-  // if (obj == objects.fwbt && code == LV_EVENT_PRESSED) ////เปลี่ยนจากคลิก เป็น กดค้างวิ่ง ปล่อยหยุดวิ่ง
-  // {
-  //   sendCommand("forward");
-  // }
-  // else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
+  if (obj == objects.fwbt && code == LV_EVENT_PRESSED) ////เปลี่ยนจากคลิก เป็น กดค้างวิ่ง ปล่อยหยุดวิ่ง
+  {
+    sendCommand("forward");
+  }
+  else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
 
-  //   if (obj == objects.bwbt && code == LV_EVENT_PRESSED)
-  //   {
-  //     sendCommand("backward");
-  //   }
-  //   else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
+    if (obj == objects.bwbt && code == LV_EVENT_PRESSED)
+    {
+      sendCommand("backward");
+    }
+    else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
 
-  //     if (obj == objects.lbt && code == LV_EVENT_PRESSED)
-  //     {
-  //       sendCommand("left");
-  //     }
-  //     else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
+      if (obj == objects.lbt && code == LV_EVENT_PRESSED)
+      {
+        sendCommand("left");
+      }
+      else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
 
-  //       if (obj == objects.rbt && code == LV_EVENT_PRESSED)
-  //       {
-  //         sendCommand("right");
-  //       }
-  //       else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
+        if (obj == objects.rbt && code == LV_EVENT_PRESSED)
+        {
+          sendCommand("right");
+        }
+        else if (obj == objects.fwbt && code == LV_EVENT_RELEASED)
 
   // next ===================================================================
   if (obj == objects.nextbt && code == LV_EVENT_CLICKED)

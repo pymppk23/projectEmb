@@ -67,8 +67,8 @@ void my_touchpad_read(lv_indev_drv_t *indev_driver, lv_indev_data_t *data)
   }
 }
 
-// const char* id = "God Hydro";
-// const char* pass = "0610187446";
+const char* id = "God Hydro";
+const char* pass = "0610187446";
 
 int pwmPin1 = 32;
 int pwmPin2 = 33;
@@ -80,12 +80,12 @@ int pwmResolution = 8;
 void setup()
 {
   Serial.begin(115200);
-  // WiFi.begin(id, pass);
-  //   while (WiFi.status() != WL_CONNECTED) {
-  //     delay(500);
-  //     Serial.print(".");
-  //   }
-  //   Serial.println("\nConnected to WiFi!");
+  WiFi.begin(id, pass);
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+    }
+    Serial.println("\nConnected to WiFi!");
 
   ledcSetup(pwmChannel1, pwmFreq, pwmResolution);
   ledcAttachPin(pwmPin1, pwmChannel1);
